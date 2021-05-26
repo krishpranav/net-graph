@@ -11,3 +11,7 @@ func init() {
 	httpRequestFirtLine = regexp.MustCompile(`([A-Z]+) (.+) (HTTP/.+)\r\n`)
 	httpResponseFirtLine = regexp.MustCompile(`(HTTP/.+) (\d{3}) (.+)\r\n`)
 }
+
+type streamKey struct {
+	net, tcp gopacket.Flow
+}

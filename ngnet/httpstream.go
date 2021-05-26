@@ -1,6 +1,9 @@
 package ngnet
 
-import "regexp"
+import (
+	"fmt"
+	"regexp"
+)
 
 var (
 	httpRequestFirtLine  *regexp.Regexp
@@ -14,4 +17,8 @@ func init() {
 
 type streamKey struct {
 	net, tcp gopacket.Flow
+}
+
+func (k streamKey) String() string {
+	return fmt.Sprintf("{%v:%v} -> {%v:%v}", k.net.Src(), k.tcp.Src(), k.net.Dst(), k.tcp.Dst())
 }
